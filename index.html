@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bootstrap 101 Template</title>
+    <title>YO!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
   </head>
   <body>
@@ -19,11 +18,8 @@
   		</form>
   	</div>
 
-    <!-- JavaScript plugins (requires jQuery) -->
     <script src="http://code.jquery.com/jquery.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
-
     <script type="text/javascript" src="js/jquery.form.js"></script>
 
     <script type="text/javascript">
@@ -38,13 +34,14 @@
     			$file.wrap(form);
           $form = $file.closest("form");
           $form.ajaxForm({
-            dataType:  'json', 
+            dataType: 'json',
             success: function(data){
               if (data.success) {
-                alert(data.filename);  
+                alert(data.filename);
               };
             } 
           });
+          
           $form.submit();
           $file.unwrap(form);
     		});	
