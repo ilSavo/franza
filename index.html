@@ -33,26 +33,16 @@
     			var form = $('<form class="aaa" enctype="multipart/form-data"></form>')
     									.attr("action", "upload.php")
     									.attr("method", "post");
-    			// form.appendTo($("body"));
-    			// .appendTo(form);
-    			//var second = $('#upload #my_file').clone(true);
-    			//second.appendTo(form);
-    			//$('<input name="ciao" type="text" value="ciao"/>').appendTo(form);
-    			// $('<input name="my_second_file" type="file"/>').appendTo(form);
-    			// $('#my_second_file').attr('val', $('#upload #my_file').val());
-    			// form.submit();
 
           var $file = $("#my_file");
     			$file.wrap(form);
           $form = $file.closest("form");
-
-          // bind 'myForm' and provide a simple callback function 
           $form.ajaxForm({
             dataType:  'json', 
-            // success identifies the function to invoke when the server response 
-            // has been received 
             success: function(data){
-              alert("Ok!");
+              if (data.success) {
+                alert(data.filename);  
+              };
             } 
           });
           $form.submit();
