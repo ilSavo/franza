@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+  	<div class="container">
+  		<h1>Hello, world!</h1>
+  		<form id="upload" method="post" action="index.php" enctype="multipart/form-data">
+  			<input type="file" name="my_file" id="my_file"><br/>
+  			<input type="text" name="my_text" id="my_text"><br/>
+  			<input type="submit" value="carica...">
+  			<br/>
+  			<br/>
+  			<a id="ajax_upload" href="#" class="btn btn-primary">Carica in AJAX</a>
+  		</form>
+  	</div>
+
+    <!-- JavaScript plugins (requires jQuery) -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+
+    <script type="text/javascript">
+    	$(document).ready(function(){
+    		$("#ajax_upload").on("click", function(e){
+    			e.preventDefault();
+    			var form = $('<form class="aaa" enctype="multipart/form-data"></form>')
+    									.attr("action", "upload.php")
+    									.attr("method", "post");
+    			// form.appendTo($("body"));
+    			// .appendTo(form);
+    			//var second = $('#upload #my_file').clone(true);
+    			//second.appendTo(form);
+    			//$('<input name="ciao" type="text" value="ciao"/>').appendTo(form);
+    			// $('<input name="my_second_file" type="file"/>').appendTo(form);
+    			// $('#my_second_file').attr('val', $('#upload #my_file').val());
+    			// form.submit();
+
+          var $file = $("#my_file");
+    			$file.wrap(form);
+          $form = $file.closest("form");
+
+          // bind 'myForm' and provide a simple callback function 
+          $form.ajaxForm({
+            dataType:  'json', 
+            // success identifies the function to invoke when the server response 
+            // has been received 
+            success: function(data){
+              alert("Ok!");
+            } 
+          });
+          $form.submit();
+          $file.unwrap(form);
+    		});	
+    	});
+    </script>
+  </body>
+</html>
